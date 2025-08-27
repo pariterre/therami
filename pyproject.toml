@@ -1,0 +1,45 @@
+[build-system]
+requires = [
+    "setuptools", 
+    "numpy",
+    "pandas",
+    "matplotlib",
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+name =  "therami"
+description = "A generic interface to generate a virtual buddy"
+dynamic = ["version"]
+authors = [
+    {name = "Pariterre", email = "pariterre@hotmail.com"},
+]
+readme = "README.md"
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python"
+]
+requires-python = ">=3.10"
+dependencies = [
+    "numpy", 
+    "pandas",
+    "matplotlib"
+]
+
+[project.optional-dependencies]
+test = ["pytest"]
+
+[project.urls]
+Documentation = "https://github.com/cr-crme/therami/tree/main#readme"
+Source = "https://github.com/cr-crme/therami"
+Tracker = "https://github.com/cr-crme/therami/issues"
+
+[tool.setuptools]
+packages = ["therami"]
+
+[tool.setuptools.dynamic]
+version = {attr = "therami.__version__"}
+
+[tool.pytest.ini_options]
+pythonpath = "."
+testpaths = "tests"
