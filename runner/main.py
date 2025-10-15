@@ -14,8 +14,12 @@ def main():
     data_folder = Path(data_folder)
 
     data = therami.TheramiData.from_json(file_dispatcher_path=data_folder / "all_data.json")
-    data.to_csv(save_path=Path("results/all_data.csv"))
-    data.filter(sides=therami.Side.sided_names).activity_counts_boxplot(save_path=Path("results/activity_counts.png"))
+    data.to_csv(save_folder=Path("results"))
+
+    # Draw plots
+    data.filter(sides=therami.Side.condition_names).activity_counts_boxplot(
+        save_path=Path("results/activity_counts_conditions.png")
+    )
 
 
 if __name__ == "__main__":

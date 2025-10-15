@@ -122,6 +122,10 @@ class Data:
     def pulse_rate(self) -> pd.DataFrame:
         return self._pulse_rate.loc[self._mask, ["timestamp_unix", "pulse_rate_bpm"]]
 
+    @property
+    def bimanual_index(self) -> pd.DataFrame:
+        self.activity_counts.mean()
+
 
 class TheramiData:
     def __init__(self, data: dict):
@@ -274,7 +278,7 @@ class TheramiData:
 
         Plotter.activity_counts_boxplot(data=self, save_path=save_path)
 
-    def to_csv(self, save_path: Path) -> None:
+    def to_csv(self, save_folder: Path) -> None:
         from .exporter import Exporter
 
-        Exporter.to_csv(data=self, save_path=save_path)
+        Exporter.to_csv(data=self, save_folder=save_folder)
